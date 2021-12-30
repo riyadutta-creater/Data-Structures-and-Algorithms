@@ -1,0 +1,44 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    Stack s = new Stack();
+	    Scanner sc = new Scanner(System.in);
+	    String s1 = sc.nextLine();
+	    boolean balance = true;
+	    for(int i=0;i<s1.length();i++){
+	        char c = s1.charAt(i);
+	        if(c=='(' ||c=='{' ||c=='['){
+	            s.push(c);
+	        }
+	        else if(c==')'){
+	            if(!s.empty() && !s.pop().equals('(')){
+	            balance = false;
+	            break;
+	            }
+	        }
+	        else if(c=='}'){
+	            if(!s.empty() && !s.pop().equals('{')){
+	            balance = false;
+	            break;
+	            }
+	        }
+	        else if(c==']'){
+	            if(!s.empty() && !s.pop().equals('[')){
+	            balance = false;
+	            break;
+	            }
+	        }
+	        else{
+	            balance = false;
+	            break;
+	        }
+	    }
+	    if(!s.empty() && balance==false){
+	        System.out.println("Not Balanced");
+	    }
+	    else{
+	        System.out.println("Balanced");
+	    }
+	}
+}
